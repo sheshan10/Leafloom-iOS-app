@@ -11,11 +11,45 @@ struct CareTaskListView: View {
     @State private var pendingDelete: CareTask?
 
     var body: some View {
+        taskList
+            .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
+            .leafScreenBackground()
+            .navigationTitle("Care")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button { router.present(.addTask(plantID: nil)) } label: { Image(systemName: "plus") }
+                        .accessibilityLabel("Add care task")
+                        .accessibilityIdentifier("care.add")
+                }
+            }
+            .confirmationDialog(
+                "Delete this task?",
+                isPresented: deleteDialogPresented,
+                titleVisibility: .visible,
+                presenting: pendingDelete
+            ) { task in
+                Button("Delete task", role: .destructive) { delete(task) }
+                Button("Cancel", role: .cancel) {}
+            } message: { task in
+                Text(task.recurrenceIntervalDays != nil
+                     ? "“\(task.title)” will be removed. Earlier completed occurrences stay in the plant’s history."
+                     : "“\(task.title)” will be removed.")
+            }
+            .leafAnimation(value: filter)
+            .accessibilityIdentifier("screen.care")
+    }
+
+    private var deleteDialogPresented: Binding<Bool> {
+        Binding(get: { pendingDelete != nil }, set: { if !$0 { pendingDelete = nil } })
+    }
+
+    private var taskList: some View {
         let now = Date.now
         let list = filter.apply(Array(tasks), now: now)
         let overdueCount = TaskFilter.overdue.apply(Array(tasks), now: now).count
 
-        List {
+        return List {
             Section {
                 Picker("Show", selection: $filter) {
                     ForEach(TaskFilter.allCases) { f in
@@ -48,27 +82,15 @@ struct CareTaskListView: View {
                 }
             }
         }
-        .listStyle(.insetGrouped)
-        .scrollContentBackground(.hidden)
-        .leafScreenBackground()
-        .navigationTitle("Care")
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button { router.present(.addTask(plantID: nil)) } label: { Image(systemName: "plus") }
-                    .accessibilityLabel("Add care task")
-                    .accessibilityIdentifier("care.add")
-            }
+    }
+
+    private func delete(_ task: CareTask) {
+        do {
+            try env.tasks.delete(task)
+            env.toasts.show("Task deleted", kind: .info)
+        } catch {
+            env.toasts.showError(error)
         }
-        .confirmationDialog("Delete this task?", isPresented: Binding(get: { pendingDelete != nil }, set: { if !$0 { pendingDelete = nil } }), titleVisibility: .visible, presenting: pendingDelete) { task in
-            Button("Delete task", role: .destructive) { delete(task) }
-            Button("Cancel", role: .cancel) {}
-        } message: { task in
-            Text(task.recurrenceIntervalDays != nil
-                 ? "“\(task.title)” will be removed. Earlier completed occurrences stay in the plant’s history."
-                 : "“\(task.title)” will be removed.")
-        }
-        .leafAnimation(value: filter)
-        .accessibilityIdentifier("screen.care")
     }
 
     private func row(_ task: CareTask) -> some View {

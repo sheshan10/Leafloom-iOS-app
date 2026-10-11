@@ -17,6 +17,7 @@ struct IdentifyView: View {
     private var cameraAvailable: Bool { UIImagePickerController.isSourceTypeAvailable(.camera) }
 
     var body: some View {
+        let preview = model.previewImage
         ScrollView {
             VStack(alignment: .leading, spacing: LeafSpacing.lg) {
                 VStack(alignment: .leading, spacing: 4) {
@@ -31,14 +32,14 @@ struct IdentifyView: View {
                 case let .result(result):
                     IdentificationResultView(
                         result: result,
-                        image: model.previewImage,
+                        image: preview,
                         selectedLabel: Binding(get: { model.selectedLabel }, set: { model.selectedLabel = $0 }),
                         onSave: saveToPlants,
                         onRetry: { model.clear() }
                     )
                 default:
                     viewfinder
-                    if model.previewImage == nil { sampleSection }
+                    if preview == nil { sampleSection }
                 }
 
                 if !history.isEmpty { historySection }
@@ -49,7 +50,7 @@ struct IdentifyView: View {
         .leafScreenBackground()
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: pickerItem) { _, item in
-            Task {
+            Task { @MainActor in
                 await model.loadPhoto(item)
                 pickerItem = nil
             }
@@ -81,10 +82,15 @@ struct IdentifyView: View {
     }
 
     private var viewfinder: some View {
-        VStack(spacing: LeafSpacing.md) {
+        let preview = model.previewImage
+        let analysing = model.phase == .analysing
+        let showRemove = preview != nil && !analysing
+        let chooseTitle = preview == nil ? "Choose photo" : "Choose another"
+        let identifyTitle = analysing ? "Analysing…" : "Identify plant"
+        return VStack(spacing: LeafSpacing.md) {
             ZStack {
-                if let image = model.previewImage {
-                    Image(uiImage: image).resizable().scaledToFill()
+                if let preview {
+                    Image(uiImage: preview).resizable().scaledToFill()
                         .accessibilityLabel("Selected photo")
                 } else {
                     VStack(spacing: LeafSpacing.sm) {
@@ -97,7 +103,7 @@ struct IdentifyView: View {
                     }
                     .accessibilityElement(children: .combine)
                 }
-                if model.phase == .analysing {
+                if analysing {
                     LeafColor.deep.opacity(0.45)
                     LoadingView(label: "Analysing…")
                         .colorScheme(.dark)
@@ -108,7 +114,7 @@ struct IdentifyView: View {
             .background(LeafColor.primarySoft)
             .clipShape(RoundedRectangle(cornerRadius: LeafRadius.xl, style: .continuous))
             .overlay(alignment: .topTrailing) {
-                if model.previewImage != nil, model.phase != .analysing {
+                if showRemove {
                     Button { model.clear() } label: { Image(systemName: "xmark") }
                         .buttonStyle(.leafIconOnImage)
                         .accessibilityLabel("Remove selected photo")
@@ -124,20 +130,20 @@ struct IdentifyView: View {
                     .accessibilityIdentifier("identify.error")
             }
 
-            if model.previewImage != nil {
+            if preview != nil {
                 Button {
-                    identifyTask = Task { await model.identify(env: env) }
+                    identifyTask = Task { @MainActor in await model.identify(env: env) }
                 } label: {
-                    Label(model.phase == .analysing ? "Analysing…" : "Identify plant", systemImage: "sparkle.magnifyingglass")
+                    Label(identifyTitle, systemImage: "sparkle.magnifyingglass")
                 }
                 .buttonStyle(.leafPrimary)
-                .disabled(model.phase == .analysing)
+                .disabled(analysing)
                 .accessibilityIdentifier("identify.run")
             }
 
             HStack(spacing: LeafSpacing.xs) {
                 PhotosPicker(selection: $pickerItem, matching: .images, photoLibrary: .shared()) {
-                    Label(model.previewImage == nil ? "Choose photo" : "Choose another", systemImage: "photo.on.rectangle")
+                    Label(chooseTitle, systemImage: "photo.on.rectangle")
                 }
                 .buttonStyle(.leafSecondary)
                 .accessibilityIdentifier("identify.library")
@@ -146,7 +152,7 @@ struct IdentifyView: View {
                         .buttonStyle(.leafSecondary)
                 }
             }
-            .disabled(model.phase == .analysing)
+            .disabled(analysing)
         }
     }
 
