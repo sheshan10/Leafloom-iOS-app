@@ -68,7 +68,7 @@ struct IdentifyView: View {
     private var modeCard: some View {
         switch env.identifier.mode {
         case .demo:
-            DemoBanner(text: "Demo mode — no Core ML model is installed. Suggestions are examples chosen without analysing the photo, and no confidence score is shown.")
+            EmptyView()
         case let .model(name):
             Label {
                 Text("On-device model: \(name). Photos never leave your iPhone. Results are suggestions — always confirm before saving.")

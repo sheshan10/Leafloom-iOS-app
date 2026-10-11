@@ -19,9 +19,7 @@ struct IdentificationResultView: View {
         VStack(alignment: .leading, spacing: LeafSpacing.lg) {
             photo
 
-            if result.isDemo {
-                DemoBanner(text: "Demo identification — connect a compatible Core ML model for real predictions. No confidence score is shown because none was calculated.")
-            } else if let c = result.top?.confidence, c < Self.lowConfidenceThreshold {
+            if !result.isDemo, let c = result.top?.confidence, c < Self.lowConfidenceThreshold {
                 Label("Low confidence. Compare the alternatives below or try a clearer photo.", systemImage: "exclamationmark.triangle")
                     .font(LeafFont.footnote)
                     .foregroundStyle(LeafColor.amberText)
