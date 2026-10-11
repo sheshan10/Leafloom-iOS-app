@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-labelledby="t">
+  <title id="t">Bar chart with a sprout growing from the tallest bar</title>
+  <ellipse cx="100" cy="82" rx="84" ry="60" fill="#B8CDB6" opacity="0.35"/>
+  <rect x="50" y="96" width="20" height="30" rx="5" fill="#B8CDB6"/>
+  <rect x="78" y="80" width="20" height="46" rx="5" fill="#75A77A"/>
+  <rect x="106" y="66" width="20" height="60" rx="5" fill="#214E3D"/>
+  <rect x="134" y="88" width="20" height="38" rx="5" fill="#DDAA52"/>
+  <path d="M116 66v-16" stroke="#214E3D" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M116 54c-10 0-15-6-15-13 10 0 15 6 15 13z" fill="#75A77A"/>
+  <path d="M116 52c8 0 13-5 13-11-8 0-13 5-13 11z" fill="#214E3D"/>
+  <rect x="40" y="126" width="124" height="5" rx="2.5" fill="#214E3D"/>
+</svg>

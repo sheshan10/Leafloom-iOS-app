@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23000" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
+    <entity name="Plant" representedClassName="Plant" syncable="YES">
+        <attribute name="acquisitionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="categoryRaw" attributeType="String" defaultValueString="foliage"/>
+        <attribute name="commonName" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateAdded" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fertilizingIntervalRaw" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="humidityRaw" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="identificationStatusRaw" attributeType="String" defaultValueString="unknown"/>
+        <attribute name="imageFilename" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSample" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="sampleAssetName" optional="YES" attributeType="String"/>
+        <attribute name="scientificName" optional="YES" attributeType="String"/>
+        <attribute name="soilPreference" optional="YES" attributeType="String"/>
+        <attribute name="sunlightRaw" optional="YES" attributeType="String"/>
+        <attribute name="tagsRaw" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="wateringIntervalRaw" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="careTasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CareTask" inverseName="plant" inverseEntity="CareTask"/>
+        <relationship name="identifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IdentificationRecord" inverseName="plant" inverseEntity="IdentificationRecord"/>
+        <relationship name="journalEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="JournalEntry" inverseName="plant" inverseEntity="JournalEntry"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CareTask" representedClassName="CareTask" syncable="YES">
+        <attribute name="categoryRaw" attributeType="String" defaultValueString="watering"/>
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSample" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="recurrenceIntervalRaw" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="seriesID" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="spawnedTaskID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="careTasks" inverseEntity="Plant"/>
+        <fetchIndex name="byDueDate">
+            <fetchIndexElement property="dueDate" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="JournalEntry" representedClassName="JournalEntry" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="entryDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="heightRaw" attributeType="Double" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageFilename" optional="YES" attributeType="String"/>
+        <attribute name="notes" attributeType="String" defaultValueString=""/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="journalEntries" inverseEntity="Plant"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="IdentificationRecord" representedClassName="IdentificationRecord" syncable="YES">
+        <attribute name="confidenceRaw" attributeType="Double" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageFilename" optional="YES" attributeType="String"/>
+        <attribute name="isDemoResult" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="modelIdentifier" attributeType="String" defaultValueString=""/>
+        <attribute name="predictedLabel" attributeType="String" defaultValueString=""/>
+        <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="identifications" inverseEntity="Plant"/>
+    </entity>
+</model>

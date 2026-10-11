@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="t">
+  <title id="t">A watering can watering a sprout, with a reminder bell</title>
+  <ellipse cx="120" cy="96" rx="104" ry="76" fill="#B8CDB6" opacity="0.35"/>
+  <!-- watering can -->
+  <path d="M40 70h52l-4 42H44z" fill="#214E3D"/>
+  <path d="M92 78l34-18" stroke="#214E3D" stroke-width="7" stroke-linecap="round"/>
+  <path d="M40 78c-14 0-16 24 2 26" stroke="#214E3D" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <ellipse cx="66" cy="70" rx="26" ry="6" fill="#75A77A"/>
+  <!-- droplets -->
+  <path d="M134 74c3 5 5 8 0 10-5-2-3-5 0-10z" fill="#75A77A"/>
+  <path d="M146 88c3 5 5 8 0 10-5-2-3-5 0-10z" fill="#75A77A"/>
+  <path d="M130 98c3 5 5 8 0 10-5-2-3-5 0-10z" fill="#75A77A"/>
+  <!-- sprout -->
+  <path d="M146 136v-18" stroke="#214E3D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M146 122c-12 0-18-8-18-16 12 0 18 8 18 16z" fill="#75A77A"/>
+  <path d="M146 118c10 0 16-6 16-14-10 0-16 6-16 14z" fill="#214E3D"/>
+  <path d="M124 134h44l-5 22h-34z" fill="#C7794F"/>
+  <!-- reminder bell -->
+  <circle cx="192" cy="54" r="22" fill="#F7F5EF" stroke="#E1E6DD" stroke-width="2"/>
+  <path d="M182 60c2-2 2-6 2-10a8 8 0 0 1 16 0c0 4 0 8 2 10z" fill="#DDAA52"/>
+  <path d="M188 64a4 4 0 0 0 8 0" stroke="#DDAA52" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

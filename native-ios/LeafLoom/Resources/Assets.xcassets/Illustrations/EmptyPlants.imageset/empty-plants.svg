@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-labelledby="t">
+  <title id="t">An empty pot with a tiny sprout</title>
+  <ellipse cx="100" cy="82" rx="84" ry="60" fill="#B8CDB6" opacity="0.35"/>
+  <path d="M100 98v-22" stroke="#214E3D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M100 82c-12 0-18-8-18-16 12 0 18 8 18 16z" fill="#75A77A"/>
+  <path d="M100 78c10 0 16-6 16-14-10 0-16 6-16 14z" fill="#214E3D"/>
+  <path d="M66 98h68l-8 36H74z" fill="#C7794F"/>
+  <rect x="62" y="94" width="76" height="10" rx="4" fill="#B0643E"/>
+  <circle cx="44" cy="44" r="4" fill="#DDAA52"/>
+  <circle cx="160" cy="56" r="3" fill="#75A77A"/>
+  <path d="M150 30l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#DDAA52"/>
+</svg>

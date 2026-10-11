@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="t">
+  <title id="t">Three potted plants on a shelf</title>
+  <ellipse cx="120" cy="96" rx="104" ry="76" fill="#B8CDB6" opacity="0.35"/>
+  <!-- tall snake plant -->
+  <path d="M58 118L52 62L64 112Z" fill="#214E3D"/>
+  <path d="M66 116L70 52L76 116Z" fill="#75A77A"/>
+  <path d="M78 118L90 70L82 120Z" fill="#214E3D"/>
+  <path d="M50 116h40l-5 32H55z" fill="#C7794F"/>
+  <rect x="47" y="112" width="46" height="8" rx="3" fill="#B0643E"/>
+  <!-- monstera -->
+  <path d="M120 112C112 92 102 86 96 70C112 70 122 84 124 108Z" fill="#75A77A"/>
+  <path d="M124 110C124 86 132 70 150 62C152 82 140 98 128 112Z" fill="#214E3D"/>
+  <path d="M126 112C132 96 146 90 160 92C156 106 142 114 128 116Z" fill="#75A77A"/>
+  <path d="M104 78l8 6M141 74l-6 8M150 98l-9 4" stroke="#F7F5EF" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M100 114h48l-6 34h-36z" fill="#F7F5EF" stroke="#E1E6DD" stroke-width="2"/>
+  <!-- succulent -->
+  <path d="M184 128C176 124 172 116 172 108C180 110 184 118 184 128Z" fill="#75A77A"/>
+  <path d="M184 128C192 124 196 116 196 108C188 110 184 118 184 128Z" fill="#75A77A"/>
+  <path d="M184 128C180 118 180 106 184 98C188 106 188 118 184 128Z" fill="#214E3D"/>
+  <path d="M168 126h32l-4 22h-24z" fill="#DDAA52"/>
+  <!-- shelf -->
+  <rect x="28" y="148" width="184" height="8" rx="4" fill="#214E3D"/>
+  <circle cx="200" cy="40" r="6" fill="#DDAA52" opacity="0.8"/>
+  <circle cx="40" cy="52" r="3" fill="#75A77A"/>
+</svg>

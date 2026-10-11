@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-labelledby="t">
+  <title id="t">An open journal with a pressed leaf</title>
+  <ellipse cx="100" cy="80" rx="84" ry="60" fill="#B8CDB6" opacity="0.35"/>
+  <path d="M100 42C86 34 64 32 44 36v80c20-4 42-2 56 6z" fill="#F7F5EF" stroke="#E1E6DD" stroke-width="2"/>
+  <path d="M100 42c14-8 36-10 56-6v80c-20-4-42-2-56 6z" fill="#FFFFFF" stroke="#E1E6DD" stroke-width="2"/>
+  <path d="M100 42v80" stroke="#214E3D" stroke-width="3"/>
+  <rect x="56" y="56" width="30" height="4" rx="2" fill="#E1E6DD"/>
+  <rect x="56" y="68" width="26" height="4" rx="2" fill="#E1E6DD"/>
+  <rect x="56" y="80" width="30" height="4" rx="2" fill="#E1E6DD"/>
+  <path d="M114 104c0-26 14-42 32-46 0 26-14 42-32 46z" fill="#75A77A"/>
+  <path d="M116 102l26-38" stroke="#214E3D" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="160" cy="30" r="4" fill="#DDAA52"/>
+</svg>

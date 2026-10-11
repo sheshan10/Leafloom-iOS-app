@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="t">
+  <title id="t">A phone camera framing a leaf for identification</title>
+  <ellipse cx="120" cy="92" rx="104" ry="78" fill="#B8CDB6" opacity="0.35"/>
+  <rect x="78" y="18" width="84" height="148" rx="16" fill="#214E3D"/>
+  <rect x="85" y="28" width="70" height="128" rx="10" fill="#F7F5EF"/>
+  <path d="M96 128C96 92 114 70 146 64C146 100 128 124 96 128Z" fill="#75A77A"/>
+  <path d="M98 126C108 112 116 100 140 72" stroke="#214E3D" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M112 106l8 7M124 90l8 6" stroke="#214E3D" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- viewfinder corners -->
+  <path d="M92 48v-8h10M148 48v-8h-10M92 136v8h10M148 136v8h-10" stroke="#DDAA52" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="90" y="92" width="60" height="3" rx="1.5" fill="#DDAA52" opacity="0.9"/>
+  <!-- sparkles -->
+  <path d="M186 52l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#DDAA52"/>
+  <path d="M52 112l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#75A77A"/>
+</svg>
