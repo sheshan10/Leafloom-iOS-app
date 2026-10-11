@@ -1,6 +1,6 @@
 # Fallback project definition for XcodeGen (https://github.com/yonaskolb/XcodeGen).
 # Only needed if the hand-written LeafLoom.xcodeproj fails to open. On the Mac:
-#   brew install xcodegen && cd native-ios && xcodegen generate
+#   brew install xcodegen && xcodegen generate
 # This regenerates LeafLoom.xcodeproj with the same targets and settings.
 name: LeafLoom
 options:
