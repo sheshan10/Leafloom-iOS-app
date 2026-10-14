@@ -23,6 +23,14 @@ You need a Mac with Xcode 16 or later.
 
 If the Xcode project does not open, install [XcodeGen](https://github.com/yonaskolb/XcodeGen) and run `xcodegen generate` in this folder. That rebuilds `LeafLoom.xcodeproj` from `project.yml`.
 
+## Documentation
+
+| Document | Contents |
+|---|---|
+| [User guide](docs/USER_GUIDE.md) | How to use every screen |
+| [Technical documentation](docs/TECHNICAL_DOCUMENTATION.md) | Build steps, architecture, data, Core ML, tests |
+| [Development report](docs/DEVELOPMENT_REPORT.md) | Purpose, design decisions, challenges, testing, reflection |
+
 ## Project layout
 
 | Path | Contents |
