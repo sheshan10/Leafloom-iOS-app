@@ -30,6 +30,7 @@ If the Xcode project does not open, install [XcodeGen](https://github.com/yonask
 | [User guide](docs/USER_GUIDE.md) | How to use every screen |
 | [Technical documentation](docs/TECHNICAL_DOCUMENTATION.md) | Build steps, architecture, data, Core ML, tests |
 | [Development report](docs/DEVELOPMENT_REPORT.md) | Purpose, design decisions, challenges, testing, reflection |
+| [Illustrated PDF](docs/LeafLoom_Documentation.pdf) | The same guide with the app screens |
 
 ## Project layout
 
